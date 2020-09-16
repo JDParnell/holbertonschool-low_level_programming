@@ -1,0 +1,1 @@
+This directory houses the begining c programming experience.
