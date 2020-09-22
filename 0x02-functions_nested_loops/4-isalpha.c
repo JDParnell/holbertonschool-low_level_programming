@@ -1,4 +1,10 @@
 #include "holberton.h"
+/**
+ *_isalpha - checks if c is an alpha character
+ *@c: the letter being tested
+ *
+ *Return: 1 if alpha, 0 otherwise
+ */
 
 int _isalpha(int c)
 {
