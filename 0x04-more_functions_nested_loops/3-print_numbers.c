@@ -1,4 +1,4 @@
-B#include "holberton.h"
+#include "holberton.h"
 
 /**
  *print_numbers - prints 0-9 followed by a new line
