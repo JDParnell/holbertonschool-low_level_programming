@@ -14,9 +14,15 @@ void print_number(int n)
 	if (n < 0)
 	{
 		_putchar(45);
+		if (n == -2147483648)
+		{
+			_putchar('0' + 2);
+			n = n % 1000000000;
+		}
 		n = -n;
 	}
 	tmp = n;
+	i = 1;
 	while (tmp / 10 != 0)
 	{
 		i = i * 10;
