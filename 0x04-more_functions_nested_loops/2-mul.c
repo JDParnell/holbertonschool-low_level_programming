@@ -1,6 +1,7 @@
 /**
  *mul - multiplies two numbers
- *@a; first number being multiplied
+ *@a: first number being multiplied
+ *
  *@b: second number being multiplied
  *Return: a * b
  */
