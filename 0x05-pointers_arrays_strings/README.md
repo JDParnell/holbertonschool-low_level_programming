@@ -1,0 +1,1 @@
+This directry will show understanding of pointers, arrays, and strings
