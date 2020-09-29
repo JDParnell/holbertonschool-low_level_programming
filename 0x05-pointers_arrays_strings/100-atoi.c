@@ -26,5 +26,5 @@ int _atoi(char *s)
 		}
 	}
 
-		return (ext * neg);
+		return (ext);
 }
