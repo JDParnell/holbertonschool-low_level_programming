@@ -19,10 +19,12 @@ int _atoi(char *s)
 		if (s[i] - 48 < 10 && s[i] - 48 >= 0)
 		{
 			ext = (ext * 10) + (s[i] - 48);
+			if (ext < 10)
+				ext *= neg;
 			if (s[i + 1] < '0' || s[i + 1] > '9')
 				break;
 		}
 	}
 
-		return (ext * neg);
+		return (ext);
 }
