@@ -24,5 +24,8 @@ int _atoi(char *s)
 		}
 	}
 
-	return (ext * neg);
+	if (s[i] == '\0')
+		return (0);
+	else
+		return (ext * neg);
 }
