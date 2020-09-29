@@ -12,7 +12,7 @@ int _atoi(char *s)
 
 	neg = 1;
 	ext = 0;
-	for (i = 0; s[i] != '\n'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] == 45)
 			neg *= -1;
@@ -24,8 +24,5 @@ int _atoi(char *s)
 		}
 	}
 
-	if (s[i] == '\0')
-		return (0);
-	else
 		return (ext * neg);
 }
