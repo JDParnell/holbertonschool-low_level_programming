@@ -9,8 +9,8 @@
 char *rot13(char *s)
 {
 	int i, j;
-	char con[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
-	char test[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	char con[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
+	char test[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
@@ -19,6 +19,7 @@ char *rot13(char *s)
 			if (s[i] == test[j])
 			{
 				s[i] = con[j];
+				break;
 			}
 		}
 	}
