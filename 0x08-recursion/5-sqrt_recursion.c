@@ -10,12 +10,11 @@
 
 int _do_sqrt(int n, int sqrt)
 {
-	if (sqrt == 0)
-		return (-1);
-	else if ((n / sqrt) == sqrt && (n / sqrt) * (n / sqrt) == n)
+	if ((n / sqrt) == sqrt && (n / sqrt) * (n / sqrt) == n)
 		return (sqrt);
-
-	return (_do_sqrt(n, sqrt - 1));
+	if (sqrt > n / 2)
+		return (-1);
+	return (_do_sqrt(n, sqrt + 1));
 }
 
 
@@ -34,7 +33,7 @@ int _sqrt_recursion(int n)
 	if (n == 1)
 		return (1);
 
-	sqrt = n / 2;
+	sqrt = 1;
 	return (_do_sqrt(n, sqrt));
 
 
