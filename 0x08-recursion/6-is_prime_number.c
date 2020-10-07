@@ -4,7 +4,7 @@
  *_do_prime - finds prime numbers
  *@n: the number being found
  *@prime: number being checked
- *Returns: 1 if prime, 0 if not
+ *Return: 1 if prime, 0 if not
  */
 
 int _do_prime(int n, int prime)
