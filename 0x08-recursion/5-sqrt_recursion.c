@@ -28,8 +28,11 @@ int _do_sqrt(int n, int sqrt)
 int _sqrt_recursion(int n)
 {
 	int sqrt;
+
 	if (n <= 0)
 		return (-1);
+	if (n == 1)
+		return (1);
 
 	sqrt = n / 2;
 	return (_do_sqrt(n, sqrt));
