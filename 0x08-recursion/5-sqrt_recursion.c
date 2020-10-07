@@ -10,9 +10,9 @@
 
 int _do_sqrt(int n, int sqrt)
 {
-	if (sqrt == 0)
+	if (sqrt <= 0)
 		return (-1);
-	else if ((n / sqrt) == sqrt && n % sqrt == 0)
+	else if ((n / sqrt) == sqrt && (n / sqrt) * (n / sqrt) == n)
 		return (sqrt);
 
 	return (_do_sqrt(n, sqrt - 1));
