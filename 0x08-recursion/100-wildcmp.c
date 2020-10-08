@@ -21,7 +21,7 @@ int _strlen_recursion(char *s)
 /**
  *do_wild - does the recursive checks
  *@s1: first string
- *@S2: second string
+ *@s2: second string
  *@l1: length of first string
  *@l2: length of second string
  *Return: 1 if "identical" 0 if not
@@ -67,6 +67,7 @@ int do_wild(char *s1, char *s2, int l1, int l2)
 int wildcmp(char *s1, char *s2)
 {
 	int t1, t2;
+
 	t1 = _strlen_recursion(s1);
 	t2 = _strlen_recursion(s2);
 
