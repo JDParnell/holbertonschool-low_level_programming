@@ -47,6 +47,10 @@ int do_wild(char *s1, char *s2, int l1, int l2)
 	if (*s1 == *s2)
 		return (do_wild(s1 + 1, s2 + 1, l1, l2));
 
+	if (*s2 == '*' && *(s2 + 1) == *s1)
+	{
+		return (do_wild(s1, s2 + 1, l1, l2));
+	}
 	if (*s2 == '*' && *(s2 + 1) == *(s1 + 1))
 		return (do_wild(s1 + 1, s2 + 1, l1, l2));
 
