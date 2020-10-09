@@ -1,0 +1,1 @@
+This directory shows understaing of argv and argc
