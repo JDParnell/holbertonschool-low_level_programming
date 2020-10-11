@@ -20,8 +20,10 @@ int main(int argc, char *argv[])
 	total = atoi(argv[1]);
 
 	if (total < 1)
+	{
 		printf("0\n");
-
+		return (0);
+	}
 	while (total != 0)
 	{
 		if (total >= 25)
