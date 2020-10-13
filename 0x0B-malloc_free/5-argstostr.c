@@ -36,6 +36,9 @@ char *argstostr(int ac, char **av)
 	char *santa;
 	char *nl = "\n";
 
+	if (ac == NULL || av == NULL)
+		return (NULL);
+
 	for (i = 0; i < ac; i++)
 	{
 		for (j = 0; av[j] != '\0'; j++)
@@ -46,6 +49,9 @@ char *argstostr(int ac, char **av)
 	}
 
 	santa = malloc(sizeof(char) * (len + 1));
+
+	if (santa == NULL)
+		return (NULL);
 
 	for (i = 0; i < ac; i++)
 	{
