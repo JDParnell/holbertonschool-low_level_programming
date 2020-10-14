@@ -21,58 +21,58 @@ int _strlen(char *s)
 /**
  *slicelen - returns the lenght of the first word of a string
  *@s: the string
+ *@n: number of slices to skip
  *Return: the length
  */
 
-int slicelen(char *s)
+int slicelen(char *s, int n)
 {
-	int i;
+	int i, j;
 
-	for (i = 0; s[i] != '\0' && s[i] != ' '; i++)
+	for (j = 0; n != 0; j++)
+	{
+		if (s[j] == ' ')
+			n--;
+	}
+	for (i = j; s[i] != '\0' && s[i] != ' '; i++)
 	{
 
 	}
 
-	return (i);
+	return (i - j);
 }
-
 /**
  *_str_slice - cuts a string to either NULL or first space
  *@s: string being sliced
  *@size: initial size of the string
+ *@n: number of slices to skip
  *Return: length of slice
  */
 
-char *_str_slice(char *s, int size)
+char *_str_slice(char *s, int size, int n)
 {
-	int i;
-	char *reslice, *slice;
+	int i, j;
+	char *slice;
 
 	slice = malloc(sizeof(char) * (size + 1));
 
 	if (slice == NULL)
 		return (NULL);
 
-	for (i = 0; *s != ' ' && s != '\0'; i++)
+	for (j = 0; n != 0; j++)
 	{
-		slice[i] = *s;
-		s++;
+		if (s[j] == ' ')
+			n--;
 	}
-	if (*s == ' ')
-		s++;
-	slice[i] = '\0';
-	size = _strlen(slice);
-
-	reslice = malloc(sizeof(char) * (size + 1));
-	if (reslice == NULL)
-		return (NULL);
-
-	for (i = 0; slice[i] != '\0'; i++)
-		reslice[i] = slice[i];
-	reslice[i] = slice[i];
-	free(slice);
-
-	return (reslice);
+	n = j;
+	j = 0;
+	for (i = n; s[i] != ' ' && s[i] != '\0'; i++)
+	{
+		slice[j] = s[i];
+		j++;
+	}
+	slice[j] = '\0';
+	return (slice);
 }
 
 /**
@@ -85,7 +85,7 @@ char *_str_slice(char *s, int size)
 char *strip_space(char *str, int size)
 {
 	int i, j = 0;
-	char *restp, *stp;
+	char  *stp;
 
 	stp = malloc(sizeof(char) * size);
 	if (stp == NULL)
@@ -105,21 +105,7 @@ char *strip_space(char *str, int size)
 		}
 	}
 	stp[j] = str[i];
-
-	size = _strlen(stp);
-
-	restp = malloc(sizeof(char) * (size + 1));
-	if (restp == NULL)
-		return (NULL);
-
-	for (i = 0; stp[i] != '\0'; i++)
-	{
-		restp[i] = stp[i];
-	}
-	restp[i] = stp[i];
-	free(stp);
-
-	return (restp);
+	return (stp);
 }
 
 /**
@@ -131,30 +117,30 @@ char *strip_space(char *str, int size)
 char **strtow(char *str)
 {
 	int i, j, size = 0, wc = 0;
-	char *strip;
-	char  **grid;
+	char **grid;
 
 	if (str == NULL || str == '\0')
 		return (NULL);
 
 
 	size = _strlen(str) + 1;
-	strip = strip_space(str, size);
+	str = strip_space(str, size);
+	printf("%s\n", str);
 
-	for (i = 0; strip[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (strip[i] == ' ')
+		if (str[i] == ' ')
 			wc++;
 	}
 	wc++;
 
-	grid = malloc(wc * sizeof(int *));
+	grid = malloc((wc + 1) * sizeof(int *));
 	if (grid == NULL)
 		return (NULL);
 
 	for (i = 0; i < wc; i++)
 	{
-		grid[i] = malloc((slicelen(str) + 1) * sizeof(char));
+		grid[i] = malloc((slicelen(str, i) + 1) * sizeof(char));
 		if (grid[i] == NULL)
 		{
 			for (j = 0; j <= i; j++)
@@ -163,9 +149,9 @@ char **strtow(char *str)
 			return (NULL);
 		}
 
-		grid[i] = _str_slice(str, slicelen(str) + 1);
+		grid[i] = _str_slice(str, slicelen(str, i) + 1, i);
 	}
-
+	grid[i] = NULL;
 	return (grid);
 
 }
