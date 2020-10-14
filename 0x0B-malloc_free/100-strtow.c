@@ -126,7 +126,6 @@ char **strtow(char *str)
 	}
 	if (wc == 1 || str[0] == '\0')
 		return (NULL);
-
 	size = _strlen(str) + 1;
 	str = strip_space(str, size);
 
@@ -136,7 +135,6 @@ char **strtow(char *str)
 			wc++;
 	}
 	wc++;
-
 	grid = malloc((wc + 1) * sizeof(int *));
 	if (grid == NULL)
 		return (NULL);
@@ -156,5 +154,4 @@ char **strtow(char *str)
 	}
 	grid[i] = NULL;
 	return (grid);
-
 }
