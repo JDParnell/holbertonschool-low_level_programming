@@ -116,12 +116,16 @@ char *strip_space(char *str, int size)
 
 char **strtow(char *str)
 {
-	int i, j, size = 0, wc = 0;
+	int i, j, size = 0, wc = 1;
 	char **grid;
 
-	if (str == NULL || str == '\0')
+	for (i = 0; i < _strlen(str); i++)
+	{
+		if (str[i] != ' ')
+			wc = 0;
+	}
+	if (wc == 1 || str[0] == '\0')
 		return (NULL);
-
 
 	size = _strlen(str) + 1;
 	str = strip_space(str, size);
