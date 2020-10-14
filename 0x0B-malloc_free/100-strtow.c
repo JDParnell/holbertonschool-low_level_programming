@@ -125,7 +125,6 @@ char **strtow(char *str)
 
 	size = _strlen(str) + 1;
 	str = strip_space(str, size);
-	printf("%s\n", str);
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
