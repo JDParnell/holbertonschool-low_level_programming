@@ -30,7 +30,9 @@ char *_strcpy(char *dest, char *src)
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *barney = malloc(sizeof(dog_t));
+	dog_t *barney;
+
+	barney = malloc(sizeof(dog_t));
 
 	if (barney == NULL)
 		return (NULL);
