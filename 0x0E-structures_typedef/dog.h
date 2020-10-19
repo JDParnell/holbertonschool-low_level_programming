@@ -4,6 +4,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * struct dog - structure storing dog data
+ * @name: Dog's name
+ * @age: Dog's age
+ * @owner: Dog's owner
+ *
+ * Description: Longer description
+ */
+
 struct dog
 {
 	char *name;
