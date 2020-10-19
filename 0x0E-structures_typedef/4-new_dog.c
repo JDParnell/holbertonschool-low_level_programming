@@ -1,23 +1,35 @@
 #include "dog.h"
 
 /**
- *_strcpy - copies a string
- *@dest: where the sting needs to be copied
- *@src: the string to be copied
- *Return: the pointer to the string
+ *_strdup - creates a copy of a string using malloc
+ *@str: the string to be copied
+ *Return: the pointer to the copy of the string
  */
 
-char *_strcpy(char *dest, char *src)
+char *_strdup(char *str)
 {
-	int i;
+	char *cpy;
+	int i, k;
 
-	for (i = 0; src[i] != '\0'; i++)
+	if (str == NULL)
+		return (NULL);
+
+	for (k = 0; str[k] != '\0'; k++)
+	{}
+
+	cpy = malloc((k + 1) * sizeof(char));
+
+	if (cpy == NULL)
+		return (NULL);
+
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		dest[i] = src[i];
+		cpy[i] = str[i];
 	}
-	dest[i] = src[i];
+	cpy[i] = str[i];
 
-	return (dest);
+	return (cpy);
+
 }
 
 /**
@@ -37,23 +49,22 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (barney == NULL)
 		return (NULL);
 
-	barney->name = malloc(sizeof(name));
+	barney->name = _strdup(name);
 	if (barney->name == NULL)
 	{
 		free(barney);
 		return (NULL);
 	}
 
-	barney->owner = malloc(sizeof(owner));
-	if (barney->owner == NULL)
+	barney->owner = _strdup(owner);
+	if(barney->owner == NULL)
 	{
 		free(barney->name);
 		free(barney);
 		return (NULL);
 	}
 
-	barney->name = _strcpy(barney->name, name);
 	barney->age = age;
-	barney->owner = _strcpy(barney->owner, owner);
+
 	return (barney);
 }
