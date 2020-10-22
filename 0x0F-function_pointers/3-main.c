@@ -24,7 +24,8 @@ int main(int argc, char *argv[])
 	}
 
 	if (strlen(argv[2]) != 1 || (o != '+' && o != '-' && o != '*'
-				     && o != '/' && o != '%'))
+				     && o != '/' && o != '%') || argv[2] == NULL
+		)
 	{
 		printf("Error\n");
 		exit(99);
