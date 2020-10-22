@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	}
 
 	a = atoi(argv[1]);
-        b = atoi(argv[3]);
+	b = atoi(argv[3]);
 
 
 	if (strlen(argv[2]) != 1 || (o != '+' && o != '-' && o != '*'
