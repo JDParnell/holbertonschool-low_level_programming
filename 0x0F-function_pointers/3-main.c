@@ -14,14 +14,15 @@ int main(int argc, char *argv[])
 	int a, b;
 	char o = argv[2][0];
 
-	a = atoi(argv[1]);
-	b = atoi(argv[3]);
-
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
+
+	a = atoi(argv[1]);
+        b = atoi(argv[3]);
+
 
 	if (strlen(argv[2]) != 1 || (o != '+' && o != '-' && o != '*'
 				     && o != '/' && o != '%') || argv[2] == NULL
