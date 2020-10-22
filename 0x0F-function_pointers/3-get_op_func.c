@@ -20,11 +20,12 @@ int (*get_op_func(char *s))(int, int)
 
 	i = 0;
 
-	while (i < 5)
+	while (i < 5 && s)
 	{
 		if (*s == *ops[i].op)
 			return (ops[i].f);
 		i++;
 	}
+
 	return (NULL);
 }
