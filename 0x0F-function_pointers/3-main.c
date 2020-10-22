@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	if (strlen(argv[2]) != 1 || (o != '+' && o != '-' && o != '*'	\
+	if (strlen(argv[2]) != 1 || (o != '+' && o != '-' && o != '*'
 				     && o != '/' && o != '%'))
 	{
 		printf("Error\n");
