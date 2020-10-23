@@ -1,0 +1,1 @@
+This directory works with variadic functions
