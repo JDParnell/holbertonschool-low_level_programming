@@ -37,7 +37,7 @@ void print_all(const char * const format, ...)
 			k = 1;
 			break; }
 		j = i + 1;
-		while (format[j] != '\0' && k != 1)
+		if (format[j] != '\0' && k != 1)
 		{
 			switch (format[j])
 			{ case 'c': case 'i': case 'f': case 's':
