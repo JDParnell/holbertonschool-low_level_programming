@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 		wt = write(file_to, buffer, rt);
 		if (rt < 0)
 			exit(printerror(98, argv[1], 0));
-		if (wt < 0)
+		if (wt <= 0)
 			exit(printerror(99, argv[2], 0));
 	}
 
