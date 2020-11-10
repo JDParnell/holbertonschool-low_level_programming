@@ -60,9 +60,9 @@ int main(int argc, char *argv[])
 	while ((rt = read(file_from, buffer, 1024)) && rt > 0 && wt >= 0)
 	{
 		wt = write(file_to, buffer, rt);
-		if (file_from < 0)
+		if (rt < 0)
 			exit(printerror(98, argv[1], 0));
-		if (file_to < 0)
+		if (wt < 0)
 			exit(printerror(99, argv[2], 0));
 	}
 
