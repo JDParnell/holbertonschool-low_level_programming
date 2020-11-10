@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 	if (rt < 0)
 		exit(printerror(98, argv[1], 0));
 	else if (wt < 0)
-		exit(printerror(99, arv[2], 0));
+		exit(printerror(99, argv[2], 0));
 	fft = close(file_from);
 	if (fft < 0)
 		exit(printerror(100, "NA", file_from));
