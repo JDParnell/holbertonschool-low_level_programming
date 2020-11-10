@@ -60,12 +60,11 @@ int main(int argc, char *argv[])
 	while ((rt = read(file_from, buffer, 1024)) && rt > 0 && wt >= 0)
 	{
 		wt = write(file_to, buffer, rt);
-		if (rt < 0)
-			exit(printerror(98, argv[1], 0));
-		if (wt <= 0)
-			exit(printerror(99, argv[2], 0));
 	}
-
+	if (rt < 0)
+		exit(printerror(98, argv[1], 0));
+	else if (wt < 0)
+		exit(printerror(99, arv[2], 0));
 	fft = close(file_from);
 	if (fft < 0)
 		exit(printerror(100, "NA", file_from));
