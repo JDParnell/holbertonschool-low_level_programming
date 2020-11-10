@@ -4,6 +4,7 @@
  *printerror - prints an error message
  *@err: the error code
  *@filename: name of the file
+ *@fc:value of fd
  *Return: the error code
  */
 
@@ -42,7 +43,7 @@ int printerror(int err, char *filename, int fc)
 
 int main(int argc, char *argv[])
 {
-	int file_from, file_to, fft, ftt;
+	int file_from, file_to, fft, ftt, rt, wt = 0;
 	char buffer[1024];
 
 	if (argc != 3)
@@ -50,15 +51,15 @@ int main(int argc, char *argv[])
 	if (argv[1] == NULL)
 		exit(printerror(98, argv[1], 0));
 	file_from = open(argv[1], O_RDONLY);
-	if (file_from == -1)
+	if (file_from < 0)
 		exit(printerror(98, argv[1], 0));
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	if (file_to == -1)
+	if (file_to < 0)
 		exit(printerror(99, argv[2], 0));
 
-	while (read(file_from, buffer, 1024) && file_from != -1 &&
-	       write(file_to, buffer, 1024) && file_to != -1)
+	while ((rt = read(file_from, buffer, 1024)) && rt > 0 && wt >= 0)
 	{
+		wt = write(file_to, buffer, rt);
 		if (file_from < 0)
 			exit(printerror(98, argv[1], 0));
 		if (file_to < 0)
