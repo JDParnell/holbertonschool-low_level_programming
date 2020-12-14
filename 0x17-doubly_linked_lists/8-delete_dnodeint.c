@@ -23,8 +23,9 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		return (1); }
 	while (i < index)
 	{
-		if (find->next == NULL && (i + 1) != index)
+		if (find->next == NULL)
 		{ return (-1); }
+
 		else
 		{
 			find = find->next;
