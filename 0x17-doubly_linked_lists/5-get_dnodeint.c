@@ -23,7 +23,9 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 		if (find->next == NULL && i != index)
 			return (NULL);
 		else if (i == index)
-			break;
+		{
+			return (find);
+		}
 		else
 		{
 			i++;
