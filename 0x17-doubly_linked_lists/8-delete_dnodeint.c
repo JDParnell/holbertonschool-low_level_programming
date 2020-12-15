@@ -32,9 +32,12 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 			find = find->next;
 			i++; }	}
 	tp = find->prev;
-	tn = find->next;
-	tp->next = tn;
-	tn->prev = tp;
+	if (find->next != NULL)
+	{	tn = find->next;
+		tp->next = tn;
+		tn->prev = tp; }
+	else
+		tp->next = NULL;
 	free(find);
 	return (1);
 }
