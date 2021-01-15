@@ -1,0 +1,1 @@
+THis directory shows the power of hash tables
