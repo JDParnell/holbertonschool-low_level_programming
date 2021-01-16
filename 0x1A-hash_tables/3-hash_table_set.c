@@ -19,8 +19,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	i = key_index((const unsigned char *)key, ht->size);
 	parser = ht->array[i];
-		while (parser != NULL)
-		{
+	for (parser = ht->array[i]; parser != NULL; parser = parser->next)
+	{
 			if (strcmp(key, parser->key))
 			{	free(parser->value);
 				parser->value = strdup(value);
