@@ -18,11 +18,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (strcmp(key, "") == 0)
 		return (0);
 	i = key_index((const unsigned char *)key, ht->size);
+	parser = ht->array[i];
 	for (parser = ht->array[i]; parser != NULL; parser = parser->next)
+<<<<<<< HEAD
 		{
 			if (strcmp(key, parser->key) == 0)
 			{
 				free(parser->value);
+=======
+	{
+			if (strcmp(key, parser->key))
+			{	free(parser->value);
+>>>>>>> 4249865d7fca9cb620034c86f7c451d8ae36df8f
 				parser->value = strdup(value);
 				if (parser->value == NULL)
 					return (0);
