@@ -20,7 +20,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	i = key_index((const unsigned char *)key, ht->size);
 	for (parser = ht->array[i]; parser != NULL; parser = parser->next)
 		{	if (strcmp(key, parser->key))
-			{	free(parser->value)
+			{	free(parser->value);
 				parser->value = strdup(value);
 				if (parser->value == NULL)
 					return (0);
