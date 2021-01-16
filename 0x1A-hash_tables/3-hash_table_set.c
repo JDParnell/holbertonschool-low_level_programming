@@ -19,16 +19,16 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	i = key_index((const unsigned char *)key, ht->size);
 	for (parser = ht->array[i]; parser != NULL; parser = parser->next)
+	{
+		if (strcmp(key, parser->key) == 0)
 		{
-			if (strcmp(key, parser->key) == 0)
-			{
-				free(parser->value);
-				parser->value = strdup(value);
-				if (parser->value == NULL)
-					return (0);
-				return (1);
-			}
+			free(parser->value);
+			parser->value = strdup(value);
+			if (parser->value == NULL)
+				return (0);
+			return (1);
 		}
+	}
 	nn = malloc(sizeof(hash_node_t *));
 	if (nn == NULL)
 		return (0);
