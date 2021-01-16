@@ -13,20 +13,20 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int i;
 	hash_node_t *nn, *parser;
 
-	unsigned const char *nkey = (unsigned const char *)key;
-
+	if (key == NULL || ht == NULL || value == NULL)
+		return (0);
 	if (!strcmp(key, ""))
 		return (0);
-	i = key_index(nkey, ht->size);
-	if (ht->array[i] != NULL)
-	{	parser = ht->array[i];
+	i = key_index((const unsigned char *)key, ht->size);
+	parser = ht->array[i];
 		while (parser != NULL)
 		{
-			if (key == parser->key)
-			{	parser->value = strdup(value);
+			if (strcmp(key, parser->key))
+			{	free(parser->value)
+				parser->value = strdup(value);
 				if (parser->value == NULL)
 					return (0);
-				return (1); } }	}
+				return (1); } }
 	nn = malloc(sizeof(hash_node_t *));
 	if (nn == NULL)
 		return (0);
@@ -39,8 +39,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{	free(nn->key);
 		free(nn);
 		return (0); }
-
-	if (ht->array[i] != NULL)
+	if (ht->array[i] == NULL)
 	{	nn->next = NULL;
 		ht->array[i] = nn; }
 	else
