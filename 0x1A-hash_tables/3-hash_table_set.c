@@ -22,7 +22,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		while (parser != NULL)
 		{
 			if (strcmp(key, parser->key))
-			{	free(parser->value)
+			{	free(parser->value);
 				parser->value = strdup(value);
 				if (parser->value == NULL)
 					return (0);
