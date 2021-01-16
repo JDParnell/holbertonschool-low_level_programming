@@ -12,6 +12,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int i;
 	hash_node_t *nn;
+
 	unsigned const char *nkey = (unsigned const char *)key;
 
 	nn = malloc(sizeof(hash_node_t));
