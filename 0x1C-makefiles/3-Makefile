@@ -1,14 +1,20 @@
 CC = gcc
-SRC = $(wildcard *.c)
+SRC = main.c holberton.c
 OBJ = $(SRC:%.c=%.o)
 NAME = holberton
 RM = rm -f
+
 all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
+
 $(OBJ):  %.o: %.c
+
 clean:
 	$(RM) *~ $(NAME)
+
 oclean:
 	$(RM) $(OBJ)
+
 fclean: clean oclean
+
 re: oclean all
